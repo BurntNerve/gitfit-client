@@ -2,9 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import BurgerMenu from './burger-menu';
-import Button from './button';
-
-import * as actions from '../actions';
 
 import './navbar.css';
 
@@ -31,9 +28,9 @@ export class Navbar extends React.Component {
             <div className="navbar-item">
               <p className="control">
                 <Link to="/registration/login">
-                  <p className="control">
-                    <h1 className="subtitle is-size-6">Login</h1>
-                  </p>
+                  <span className="control">
+                    <span className="subtitle is-size-6">Login</span>
+                  </span>
                 </Link>
               </p>
             </div>
@@ -41,7 +38,7 @@ export class Navbar extends React.Component {
               <div className="field is-grouped">
                 <Link to="/resources">
                   <p className="control">
-                    <h1 className="subtitle is-size-6">Resources</h1>
+                    <span className="subtitle is-size-6">Resources</span>
                   </p>
                 </Link>
               </div>

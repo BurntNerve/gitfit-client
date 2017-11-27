@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import Button from './button';
 import LogData from './log-data';
 
-import * as actions from '../actions';
-
 import './workout-log.css';
 
 export function WorkoutLog(props) {

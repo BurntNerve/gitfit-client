@@ -1,6 +1,6 @@
 import React from 'react';
-import SetButton from './set-button';
-import AllButton from './all-button';
+// import SetButton from './set-button';
+// import AllButton from './all-button';
 import './exercise-input.css';
 
 export default function ExerciseInput(props) {

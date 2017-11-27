@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import SignUp from './sign-up';
 import LogIn from './log-in';
 import './registration.css';
