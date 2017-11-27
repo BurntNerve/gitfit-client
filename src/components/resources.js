@@ -1,7 +1,7 @@
 import React from 'react';
 import './resources.css';
 
-export default function Resources(props) {
+export default function Resources() {
   //
   return (
     <section className="section resource-section">
@@ -10,7 +10,43 @@ export default function Resources(props) {
         <hr />
         <section className="section">
           <div className="container">
-            <div className="columns nutrition-section">
+            <div className="columns odd-section">
+              <div className="column">
+                <h1 className="title has-text-gray-darker">Form</h1>
+                <h2 className="subtitle has-text-grey-darker">
+                  The following three sections are the core tenents of leading a
+                  healthy lifestyle. However, Form is what allows you to capture
+                  the full benefits of your movements as well as give you the
+                  best chance of preventing injury. Since our goal is to improve
+                  our bodies, minimizing the risk of injury is of paramount
+                  importance.
+                </h2>
+              </div>
+              <div className="column">
+                <h1 className="title has-text-grey-darker">Links:</h1>
+                <h2 className="subtitle link">
+                  <a
+                    className="has-text-grey-darker"
+                    href="https://www.youtube.com/watch?v=EP2g3Sj3qSw"
+                  >
+                    https://www.youtube.com/watch?v=EP2g3Sj3qSw
+                  </a>
+                </h2>
+                <h2 className="subtitle link">
+                  <a
+                    className="has-text-grey-darker"
+                    href="https://www.youtube.com/watch?v=ro3Mh9o7JPU"
+                  >
+                    https://www.youtube.com/watch?v=ro3Mh9o7JPU
+                  </a>
+                </h2>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="section">
+          <div className="container">
+            <div className="columns even-section">
               <div className="column">
                 <h1 className="title has-text-white-bis">Nutrition</h1>
                 <h2 className="subtitle has-text-white-bis">
@@ -43,7 +79,7 @@ export default function Resources(props) {
         </section>
         <section className="section">
           <div className="container">
-            <div className="columns exercise-section">
+            <div className="columns odd-section">
               <div className="column">
                 <h1 className="title has-text-grey-darker">Exercise</h1>
                 <h2 className="subtitle has-text-grey-darker">
@@ -77,7 +113,7 @@ export default function Resources(props) {
         </section>
         <section className="section">
           <div className="container">
-            <div className="columns nutrition-section">
+            <div className="columns even-section">
               <div className="column">
                 <h1 className="title has-text-white-bis">Rest</h1>
                 <h2 className="subtitle has-text-white-bis">

@@ -2,12 +2,12 @@
   min-height: 93vh;
 }
 
-.nutrition-section {
+.even-section {
   background-color: hsl(0, 0%, 21%);
   min-height: 250px;
 }
 
-.exercise-section {
+.odd-section {
   background-color: hsl(0, 0%, 71%);
   min-height: 250px;
 }
