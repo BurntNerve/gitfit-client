@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import BurgerMenu from './burger-menu';
 import Button from './button';
 
@@ -23,7 +23,9 @@ export class Navbar extends React.Component {
 
         <div
           id="navbarThing"
-          className={`navbar-menu ${this.props.burgerActive ? 'is-active' : ''}`}
+          className={`navbar-menu ${
+            this.props.burgerActive ? 'is-active' : ''
+          }`}
         >
           <div className="navbar-start">
             <div className="navbar-item">
