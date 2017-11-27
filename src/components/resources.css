@@ -1,0 +1,17 @@
+.resource-section {
+  min-height: 93vh;
+}
+
+.nutrition-section {
+  background-color: hsl(0, 0%, 21%);
+  min-height: 250px;
+}
+
+.exercise-section {
+  background-color: hsl(0, 0%, 71%);
+  min-height: 250px;
+}
+
+.link {
+  margin: 0 !important;
+}

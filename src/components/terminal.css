@@ -1,0 +1,46 @@
+.terminal {
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 800px;
+  min-height: 400px;
+  background-color: #292a35;
+  border-radius: 5px;
+  font-family: 'Courier New', Courier;
+  color: hsl(0, 0%, 98%);
+  font-weight: bolder;
+  padding-left: 10px;
+}
+
+.topArea {
+  background-color: #292a35;
+  display: block;
+  min-height: 25px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  color: #292a35;
+}
+
+.size-button {
+  border-radius: 100%;
+  border: 0;
+  font-size: 9px;
+  height: 13px;
+  width: 13px;
+  margin-top: 5px;
+  padding: 0;
+}
+
+.exit {
+  background-color: #ea6b63;
+}
+
+.mini {
+  background-color: #f3be59;
+  margin-left: 5px;
+}
+
+.big {
+  background-color: #66c65b;
+  margin-left: 5px;
+}

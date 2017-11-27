@@ -1,0 +1,33 @@
+.profile-section {
+  min-height: 90vh;
+  background-color: hsl(0, 0%, 21%);
+}
+
+.submit-button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 275px;
+}
+
+.is-ancestor {
+  height: 100%;
+}
+
+.chart-area {
+  background-color: black;
+}
+
+#progressChart {
+  height: 100%;
+  width: 100%;
+}
+
+.down {
+  color: red;
+}
+
+.up {
+  color: green;
+}

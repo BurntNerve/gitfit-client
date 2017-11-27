@@ -1,0 +1,17 @@
+.column {
+  min-height: 250px;
+}
+
+.image-area {
+  background-color: hsl(0, 0%, 29%);
+}
+
+.secondContent {
+  background-color: hsl(0, 0%, 96%);
+}
+
+.column.has-vertically-aligned-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
