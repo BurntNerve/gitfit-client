@@ -2,4 +2,5 @@ import { createStore } from 'redux';
 
 import { workoutReducer } from './reducers';
 
-export default createStore(workoutReducer);
+const store = createStore(workoutReducer);
+export default store;
