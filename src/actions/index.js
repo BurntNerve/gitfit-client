@@ -19,3 +19,16 @@ export const deleteWorkout = logIndex => ({
   type: DELETE_WORKOUT,
   logIndex,
 });
+
+export const CHANGE_REPS = 'CHANGE_REPS';
+export const changeReps = (amount, index) => ({
+  type: CHANGE_REPS,
+  amount,
+  index,
+});
+
+export const NEXT_EXERCISE = 'NEXT_EXERCISE';
+export const nextExercise = infoObject => ({
+  type: NEXT_EXERCISE,
+  infoObject,
+});

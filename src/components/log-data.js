@@ -23,16 +23,13 @@ export function LogData(props) {
           {props.logDataDate}
         </p>
         <p className="is-size-6-mobile is-size-4-tablet">
-          {props.firstExercise}: {props.firstSets} x {props.firstReps}{' '}
-          {props.firstWeight}lbs
+          {props.firstExercise}: {props.firstWeight}lbs
         </p>
         <p className="is-size-6-mobile is-size-4-tablet">
-          {props.secondExercise}: {props.secondSets} x {props.secondReps}{' '}
-          {props.secondWeight}lbs
+          {props.secondExercise}: {props.secondWeight}lbs
         </p>
         <p className="is-size-6-mobile is-size-4-tablet">
-          {props.thirdExercise}: {props.thirdSets} x {props.thirdReps}{' '}
-          {props.thirdWeight}lbs
+          {props.thirdExercise}: {props.thirdWeight}lbs
         </p>
         <p className="is-size-6-mobile is-size-4-tablet">
           Body Weight: {props.bodyWeight}lbs

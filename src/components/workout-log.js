@@ -9,6 +9,7 @@ import './workout-log.css';
 export function WorkoutLog(props) {
   const workouts = props.workouts.map((workout, index) => (
     <LogData
+      key={index}
       index={index}
       logDataDate={props.workouts[index].date}
       firstExercise={props.workouts[index].firstExercise}

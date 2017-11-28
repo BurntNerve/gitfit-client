@@ -1,5 +1,8 @@
-.set-button {
-  border-radius: 100%;
-  margin-left: 10px;
-  margin-top: 10px;
+.select select {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.control {
+  display: inline-block;
 }

@@ -26,13 +26,12 @@ export class WorkoutStatsTile extends React.Component {
       const totalWeightMoved = this.props.workouts
         .reduce((totalWeight, workout) => {
           const firstExerciseWeight =
-            workout.firstReps * workout.firstSets * workout.firstWeight;
-
+            workout.firstSets.reduce((firstTotalWeight, reps) => firstTotalWeight + reps) * workout.firstWeight;
           const secondExerciseWeight =
-            workout.secondReps * workout.secondSets * workout.secondWeight;
+            workout.secondSets.reduce((secondTotalWeight, reps) => secondTotalWeight + reps) * workout.secondWeight;
 
           const thirdExerciseWeight =
-            workout.thirdReps * workout.thirdSets * workout.thirdWeight;
+            workout.thirdSets.reduce((thirdTotalWeight, reps) => thirdTotalWeight + reps) * workout.thirdWeight;
 
           const totalWorkoutWeight =
             firstExerciseWeight + secondExerciseWeight + thirdExerciseWeight;
