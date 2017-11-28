@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 import { connect } from 'react-redux';
 import ExerciseInput from './exercise-input';
 import Button from './button';
