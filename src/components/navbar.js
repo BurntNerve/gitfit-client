@@ -26,22 +26,18 @@ export class Navbar extends React.Component {
         >
           <div className="navbar-start">
             <div className="navbar-item">
-              <p className="control">
-                <Link to="/registration/login">
-                  <span className="control">
-                    <span className="subtitle is-size-6">Login</span>
-                  </span>
-                </Link>
-              </p>
+              <Link to="/registration/login">
+                <span className="control">
+                  <span className="subtitle is-size-6">Login</span>
+                </span>
+              </Link>
             </div>
             <div className="navbar-item">
-              <div className="field is-grouped">
-                <Link to="/resources">
-                  <p className="control">
-                    <span className="subtitle is-size-6">Resources</span>
-                  </p>
-                </Link>
-              </div>
+              <Link to="/resources">
+                <span className="control">
+                  <span className="subtitle is-size-6">Resources</span>
+                </span>
+              </Link>
             </div>
           </div>
           <div className="navbar-end" />
