@@ -8,27 +8,9 @@ import './workout-log.css';
 
 export function WorkoutLog(props) {
   const workouts = props.workouts.map((workout, index) => (
-    <LogData
-      key={index}
-      index={index}
-      logDataDate={props.workouts[index].date}
-      firstExercise={props.workouts[index].firstExercise}
-      firstSets={props.workouts[index].firstSets}
-      firstReps={props.workouts[index].firstReps}
-      firstWeight={props.workouts[index].firstWeight}
-      secondExercise={props.workouts[index].secondExercise}
-      secondSets={props.workouts[index].secondSets}
-      secondReps={props.workouts[index].secondReps}
-      secondWeight={props.workouts[index].secondWeight}
-      thirdExercise={props.workouts[index].thirdExercise}
-      thirdSets={props.workouts[index].thirdSets}
-      thirdReps={props.workouts[index].thirdReps}
-      thirdWeight={props.workouts[index].thirdWeight}
-      bodyWeight={props.workouts[index].bodyWeight}
-      modalActive={props.workouts[index].modalActive}
-    />
+    <LogData key={index} index={index} />
   ));
-  console.log(workouts);
+
   if (workouts.length > 0) {
     return (
       <section className="section timeline-section">

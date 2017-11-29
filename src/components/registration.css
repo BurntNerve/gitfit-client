@@ -3,6 +3,10 @@
   background-color: hsl(0, 0%, 21%);
 }
 
+.field-control {
+  width: 100% !important;
+}
+
 .sign-up-section {
   min-width: 100%;
   padding: 0;

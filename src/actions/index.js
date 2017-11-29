@@ -32,3 +32,28 @@ export const nextExercise = infoObject => ({
   type: NEXT_EXERCISE,
   infoObject,
 });
+
+export const SAVE_WORKOUT = 'SAVE_WORKOUT';
+export const saveWorkout = infoObject => ({
+  type: SAVE_WORKOUT,
+  infoObject,
+});
+
+export const UPDATE_WEIGHT = 'UPDATE_WEIGHT';
+export const updateWeight = newWeight => ({
+  type: UPDATE_WEIGHT,
+  newWeight,
+});
+
+export const TRIGGER_WARNING = 'TRIGGER_WARNING';
+export const triggerWarning = warningMessage => ({
+  type: TRIGGER_WARNING,
+  warningMessage,
+});
+
+export const UPDATE_WORKOUT = 'UPDATE_WORKOUT';
+export const updateWorkout = (infoObject, index) => ({
+  type: UPDATE_WORKOUT,
+  infoObject,
+  index,
+});

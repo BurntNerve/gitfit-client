@@ -21,7 +21,7 @@ export default function SignUp(props) {
             <Field label="Username" type="text" />
             <Field label="Password" type="password" />
 
-            <div className="control has-text-centered">
+            <div className="control has-text-centered field-control">
               <Link to="/profile">
                 <Button text="Submit" newClasses="submit-button is-dark" />
               </Link>

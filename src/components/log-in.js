@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Field from './field';
 import Button from './button';
-import { Link } from 'react-router-dom';
 
 export default function LogIn(props) {
   //
@@ -11,7 +11,7 @@ export default function LogIn(props) {
         <div className="field">
           <Field type="text" label="Username" />
           <Field type="password" label="Password" />
-          <div className="control has-text-centered">
+          <div className="control has-text-centered field-control">
             <Link to="/profile">
               <Button text="Submit" newClasses="submit-button is-dark" />
             </Link>

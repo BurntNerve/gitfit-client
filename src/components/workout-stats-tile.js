@@ -26,12 +26,16 @@ export class WorkoutStatsTile extends React.Component {
       const totalWeightMoved = this.props.workouts
         .reduce((totalWeight, workout) => {
           const firstExerciseWeight =
-            workout.firstSets.reduce((firstTotalWeight, reps) => firstTotalWeight + reps) * workout.firstWeight;
+            workout.firstSets.reduce((firstTotalWeight, reps) =>
+              Number(firstTotalWeight) + Number(reps)) * workout.firstWeight;
+
           const secondExerciseWeight =
-            workout.secondSets.reduce((secondTotalWeight, reps) => secondTotalWeight + reps) * workout.secondWeight;
+            workout.secondSets.reduce((secondTotalWeight, reps) =>
+              Number(secondTotalWeight) + Number(reps)) * workout.secondWeight;
 
           const thirdExerciseWeight =
-            workout.thirdSets.reduce((thirdTotalWeight, reps) => thirdTotalWeight + reps) * workout.thirdWeight;
+            workout.thirdSets.reduce((thirdTotalWeight, reps) =>
+              Number(thirdTotalWeight) + Number(reps)) * workout.thirdWeight;
 
           const totalWorkoutWeight =
             firstExerciseWeight + secondExerciseWeight + thirdExerciseWeight;
@@ -99,11 +103,6 @@ export class WorkoutStatsTile extends React.Component {
     );
   }
 }
-
-// const mapStateToProps = state => ({
-//   workouts: state.workouts,
-//   totalWorkouts: state.workouts.length,
-// });
 
 const mapStateToProps = state => {
   if (state.workouts.length > 0) {

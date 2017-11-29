@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import ExerciseInput from './exercise-input';
 import Button from './button';
@@ -50,26 +51,8 @@ export function WorkoutDataTile(props) {
     newThirdExerciseWeight,
   ];
 
-  // const newWorkout = {
-  //   date: String(moment().format('MMM Do YYYY')),
-  //   type: newWorkoutType,
-  //   firstExercise: newWorkoutExercises[0],
-  //   firstSets: undefined,
-  //   firstWeight: newFirstExerciseWeight,
-  //   firstSucceeded: undefined,
-  //   secondExercise: newWorkoutExercises[1],
-  //   secondSets: undefined,
-  //   secondWeight: newSecondExerciseWeight,
-  //   secondSucceeded: undefined,
-  //   thirdExercise: newWorkoutExercises[2],
-  //   thirdSets: undefined,
-  //   thirdWeight: newThirdExerciseWeight,
-  //   thirdSucceeded: undefined,
-  //   bodyWeight: props.lastWorkout.bodyWeight,
-  //   modalActive: false,
-  // };
-
   const firstInfo = {
+    date: String(moment().format('MMM Do YYYY')),
     type: newWorkoutType,
     firstExercise: newWorkoutExercises[0],
     firstSets: props.currentExerciseSets,
@@ -77,14 +60,49 @@ export function WorkoutDataTile(props) {
     firstSucceeded: false,
   };
 
+  const secondInfo = {
+    secondExercise: newWorkoutExercises[1],
+    secondSets: props.currentExerciseSets,
+    secondWeight: newSecondExerciseWeight,
+    secondSucceeded: false,
+  };
+
+  const thirdInfo = {
+    thirdExercise: newWorkoutExercises[2],
+    thirdSets: props.currentExerciseSets,
+    thirdWeight: newThirdExerciseWeight,
+    thirdSucceeded: false,
+    bodyWeight: props.lastWorkout.bodyWeight,
+  };
+
   if (
     props.currentExerciseSets.reduce((totalReps, set) => Number(totalReps) + Number(set)) === 25
   ) {
     firstInfo.firstSucceeded = true;
+    secondInfo.secondSucceeded = true;
+    thirdInfo.thirdSucceeded = true;
+  } else {
+    firstInfo.firstSucceeded = false;
+    secondInfo.secondSucceeded = false;
+    thirdInfo.thirdSucceeded = false;
+  }
+  if (props.lastWorkout.date === String(moment().format('MMM Do YYYY'))) {
+    return (
+      <div className="tile is-parent workout-data-tile">
+        <article className="tile is-child notification has-text-left workout-data-section">
+          <p className="title is-size-2">Enter your workout data...</p>
+          <p className="subtitle is-size-6">
+            Click each button to designate how many reps you completed for each
+            set of the exercise. Make sure to update your weight after every
+            workout in order to keep track of it.
+          </p>
+          <hr />
+          <h1 className="subtitle">You have logged your workout for today!</h1>
+        </article>
+      </div>
+    );
   }
 
-  console.log(firstInfo);
-  console.log(props.newWorkout);
   if (props.currentExerciseCounter < 2) {
     return (
       <div className="tile is-parent workout-data-tile">
@@ -92,8 +110,8 @@ export function WorkoutDataTile(props) {
           <p className="title is-size-2">Enter your workout data...</p>
           <p className="subtitle is-size-6">
             Click each button to designate how many reps you completed for each
-            set of the exercise. If you completed the entire exercise without
-            failure just click the checkmark button to autofill the exercise.
+            set of the exercise. Make sure to update your weight after every
+            workout in order to keep track of it.
           </p>
           <ExerciseInput
             exercise={newWorkoutExercises[props.currentExerciseCounter]}
@@ -102,7 +120,9 @@ export function WorkoutDataTile(props) {
           <Button
             newClasses="submit-button is-dark"
             text="Next Exercise"
-            onClick={() => props.dispatch(actions.nextExercise())}
+            onClick={() =>
+              props.dispatch(actions.nextExercise(props.currentExerciseCounter === 0 ? firstInfo : secondInfo))
+            }
           />
         </article>
       </div>
@@ -114,8 +134,8 @@ export function WorkoutDataTile(props) {
           <p className="title is-size-2">Enter your workout data...</p>
           <p className="subtitle is-size-6">
             Click each button to designate how many reps you completed for each
-            set of the exercise. If you completed the entire exercise without
-            failure just click the checkmark button to autofill the exercise.
+            set of the exercise. Make sure to update your weight after every
+            workout in order to keep track of it.
           </p>
           <ExerciseInput
             exercise={newWorkoutExercises[props.currentExerciseCounter]}
@@ -124,9 +144,7 @@ export function WorkoutDataTile(props) {
           <Button
             newClasses="submit-button is-dark"
             text="Save Workout"
-            onClick={() =>
-              props.dispatch(actions.nextExercise('placeholder value'))
-            }
+            onClick={() => props.dispatch(actions.saveWorkout(thirdInfo))}
           />
         </article>
       </div>
