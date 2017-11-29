@@ -1,6 +1,10 @@
 import { createStore } from 'redux';
 
-import { workoutReducer } from './reducers';
+import rootReducer from './reducers';
 
-const store = createStore(workoutReducer);
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+);
+
 export default store;

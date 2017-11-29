@@ -48,8 +48,9 @@ export function SetButton(props) {
 }
 
 const mapStateToProps = (state, props) => ({
-  currentExerciseSetIndex: state.currentExerciseSets[props.index],
-  currentExerciseSets: state.currentExerciseSets,
+  currentExerciseSetIndex:
+    state.workoutReducer.currentExerciseSets[props.index],
+  currentExerciseSets: state.workoutReducer.currentExerciseSets,
 });
 
 export default connect(mapStateToProps)(SetButton);

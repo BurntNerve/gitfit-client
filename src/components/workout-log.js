@@ -65,7 +65,7 @@ export function WorkoutLog(props) {
 }
 
 const mapStateToProps = state => ({
-  workouts: state.workouts,
+  workouts: state.workoutReducer.workouts,
 });
 
 export default connect(mapStateToProps)(WorkoutLog);

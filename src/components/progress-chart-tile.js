@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import WeightField from './weight-field';
 
 export function ProgressChartTile(props) {
-  if (props.mostRecentWeight) {
+  if (props.workouts.length > 0) {
     let change;
     let changePercent;
     const progress = () => {
@@ -50,21 +50,27 @@ export function ProgressChartTile(props) {
         <h2 className="title is-size-5 has-text-left">
           Goal Weight: {props.goals.goalWeight}lbs
         </h2>
+        <label className="label has-text-left">Add your weight in lbs.</label>
+        <WeightField />
       </article>
     </div>
   );
 }
 
 const mapStateToProps = state => {
-  if (state.workouts.length > 0) {
+  if (state.workoutReducer.workouts.length > 0) {
     return {
-      goals: state.goals,
-      mostRecentWeight: state.workouts[state.workouts.length - 1].bodyWeight,
+      workouts: state.workoutReducer.workouts,
+      goals: state.workoutReducer.goals,
+      mostRecentWeight:
+        state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1]
+          .bodyWeight,
     };
   }
   return {
-    goals: state.goals,
-    mostRecentWeight: false,
+    workouts: state.workoutReducer.workouts,
+    goals: state.workoutReducer.goals,
+    mostRecentWeight: state.workoutReducer.goals.startingWeight,
   };
 };
 

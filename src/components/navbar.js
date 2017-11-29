@@ -48,7 +48,7 @@ export class Navbar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  burgerActive: state.activeClasses.burgerMenu,
+  burgerActive: state.workoutReducer.activeClasses.burgerMenu,
 });
 
 export default connect(mapStateToProps)(Navbar);

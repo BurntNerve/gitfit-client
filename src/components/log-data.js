@@ -166,10 +166,10 @@ export function LogData(props) {
 }
 
 const mapStateToProps = (state, props) => ({
-  workout: state.workouts[props.index],
-  currentExerciseSets: state.currentExerciseSets,
-  currentExerciseCounter: state.currentExerciseCounter,
-  newWorkout: state.newWorkout,
+  workout: state.workoutReducer.workouts[props.index],
+  currentExerciseSets: state.workoutReducer.currentExerciseSets,
+  currentExerciseCounter: state.workoutReducer.currentExerciseCounter,
+  newWorkout: state.workoutReducer.newWorkout,
 });
 
 export default connect(mapStateToProps)(LogData);

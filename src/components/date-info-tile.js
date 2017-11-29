@@ -28,9 +28,11 @@ export function DateInfoTile(props) {
 }
 
 const mapStateToProps = state => {
-  if (state.workouts.length > 0) {
+  if (state.workoutReducer.workouts.length > 0) {
     return {
-      lastWorkout: state.workouts[state.workouts.length - 1].date,
+      lastWorkout:
+        state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1]
+          .date,
     };
   }
   return {

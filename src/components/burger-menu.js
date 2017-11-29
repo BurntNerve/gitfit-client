@@ -10,7 +10,9 @@ export function BurgerMenu(props) {
 
   return (
     <div
-      className={`navbar-burger burger ${props.burgerActive ? 'is-active' : ''}`}
+      className={`navbar-burger burger ${
+        props.burgerActive ? 'is-active' : ''
+      }`}
       data-target="navbarThing"
       onClick={() => burgerActive()}
     >
@@ -22,7 +24,7 @@ export function BurgerMenu(props) {
 }
 
 const mapStateToProps = state => ({
-  burgerActive: state.activeClasses.burgerMenu,
+  burgerActive: state.workoutReducer.activeClasses.burgerMenu,
 });
 
 export default connect(mapStateToProps)(BurgerMenu);

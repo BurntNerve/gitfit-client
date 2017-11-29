@@ -105,11 +105,12 @@ export class WorkoutStatsTile extends React.Component {
 }
 
 const mapStateToProps = state => {
-  if (state.workouts.length > 0) {
+  if (state.workoutReducer.workouts.length > 0) {
     return {
-      workouts: state.workouts,
-      totalWorkouts: state.workouts.length,
-      mostRecentWorkout: state.workouts[state.workouts.length - 1],
+      workouts: state.workoutReducer.workouts,
+      totalWorkouts: state.workoutReducer.workouts.length,
+      mostRecentWorkout:
+        state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1],
     };
   }
   return {

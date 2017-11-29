@@ -72,7 +72,7 @@ export function WorkoutDataTile(props) {
     thirdSets: props.currentExerciseSets,
     thirdWeight: newThirdExerciseWeight,
     thirdSucceeded: false,
-    bodyWeight: props.lastWorkout.bodyWeight,
+    bodyWeight: props.lastWorkout.bodyWeight || props.goals.startingWeight,
   };
 
   if (
@@ -152,17 +152,73 @@ export function WorkoutDataTile(props) {
   }
 }
 
-const mapStateToProps = state => ({
-  workouts: state.workouts,
-  lastWorkout: state.workouts[state.workouts.length - 1],
-  lastWorkoutSameType: state.workouts[state.workouts.length - 2],
-  mostRecentWorkoutType: state.workouts[state.workouts.length - 1].type,
-  firstSuccess: state.workouts[state.workouts.length - 1].firstSucceeded,
-  secondSuccess: state.workouts[state.workouts.length - 2].secondSucceeded,
-  thirdSuccess: state.workouts[state.workouts.length - 2].thirdSucceeded,
-  currentExerciseCounter: state.currentExerciseCounter,
-  currentExerciseSets: state.currentExerciseSets,
-  newWorkout: state.newWorkout,
-});
+const mapStateToProps = state => {
+  if (state.workoutReducer.workouts.length === 0) {
+    return {
+      workouts: state.workoutReducer.workouts,
+      goals: state.workoutReducer.goals,
+      lastWorkout: {
+        firstWeight: 45,
+        secondWeight: 45,
+        thirdWeight: 45,
+      },
+      lastWorkoutSameType: {
+        firstWeight: 45,
+        secondWeight: 45,
+        thirdWeight: 45,
+      },
+      currentExerciseSets: state.workoutReducer.currentExerciseSets,
+      currentExerciseCounter: state.workoutReducer.currentExerciseCounter,
+      newWorkout: state.workoutReducer.newWorkout,
+    };
+  } else if (state.workoutReducer.workouts.length === 1) {
+    return {
+      workouts: state.workoutReducer.workouts,
+      goals: state.workoutReducer.goals,
+      lastWorkout:
+        state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1],
+      lastWorkoutSameType: {
+        firstWeight: 45,
+        secondWeight: 45,
+        thirdWeight: 45,
+      },
+      mostRecentWorkoutType:
+        state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1]
+          .type || 'a',
+      firstSuccess:
+        state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1]
+          .firstSucceeded,
+      secondSuccess: false,
+      thirdSuccess: false,
+      currentExerciseCounter: state.workoutReducer.currentExerciseCounter,
+      currentExerciseSets: state.workoutReducer.currentExerciseSets,
+      newWorkout: state.workoutReducer.newWorkout,
+    };
+  }
+  return {
+    workouts: state.workoutReducer.workouts,
+    lastWorkout:
+      state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1],
+    lastWorkoutSameType:
+      state.workoutReducer.workouts[state.workoutReducer.workouts.length - 2],
+    mostRecentWorkoutType:
+      state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1]
+        .type || 'a',
+    firstSuccess:
+      state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1]
+        .firstSucceeded,
+    secondSuccess:
+      state.workoutReducer.workouts[state.workoutReducer.workouts.length - 2]
+        .secondSucceeded ||
+      state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1]
+        .secondSucceeded,
+    thirdSuccess:
+      state.workoutReducer.workouts[state.workoutReducer.workouts.length - 2]
+        .thirdSucceeded,
+    currentExerciseCounter: state.workoutReducer.currentExerciseCounter,
+    currentExerciseSets: state.workoutReducer.currentExerciseSets,
+    newWorkout: state.workoutReducer.newWorkout,
+  };
+};
 
 export default connect(mapStateToProps)(WorkoutDataTile);

@@ -39,7 +39,7 @@ export function Profile(props) {
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.currentUser,
+  currentUser: state.workoutReducer.currentUser,
 });
 
 export default connect(mapStateToProps)(Profile);
