@@ -1,3 +1,27 @@
+// import jwtDecode from 'jwt-decode';
+// import { fromByteArray } from 'base64-js';
+// import { TextEncoder } from 'text-encoding';
+//
+// import { API_BASE_URL } from '../config';
+// import { saveAuthToken, clearAuthToken } from '../local-storage';
+
+export const normalizeResponseErrors = res => {
+  if (!res.ok) {
+    if (
+      res.headers.has('content-type') &&
+      res.headers.get('content-type').startsWith('application/json')
+    ) {
+      return res.json().then(err => Promise.reject(err));
+    }
+
+    return Promise.reject({
+      code: res.status,
+      message: res.statusText,
+    });
+  }
+  return res;
+};
+
 export const BURGER_ACTIVE = 'BURGER_ACTIVE';
 export const burgerActive = () => ({
   type: BURGER_ACTIVE,
@@ -57,3 +81,76 @@ export const updateWorkout = (infoObject, index) => ({
   infoObject,
   index,
 });
+
+export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
+export const registerUserSuccess = user => ({
+  type: REGISTER_USER_SUCCESS,
+  user,
+});
+
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const loginUserSuccess = (token, userInfo, loggedIn) => ({
+  type: LOGIN_USER_SUCCESS,
+  token,
+  userInfo,
+  loggedIn,
+});
+
+export const HANDLE_LOG_OUT = 'HANDLE_LOG_OUT';
+export const handleLogOut = () => ({
+  type: HANDLE_LOG_OUT,
+});
+
+export const registerUser = (
+  fullName,
+  currentWeight,
+  goalWeight,
+  username,
+  password,
+) => dispatch => {
+  fetch('http://localhost:8080/api/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      fullName,
+      currentWeight,
+      goalWeight,
+      username,
+      password,
+    }),
+  })
+    .then(response => response.json())
+    .then(json => {
+      if (json.code) {
+        return alert(json.message);
+      }
+      dispatch(registerUserSuccess(json));
+    })
+    .catch(error => console.log(error));
+};
+
+export const logInUser = (username, password) => dispatch => {
+  console.log(username);
+  console.log(password);
+  fetch('http://localhost:8080/api/auth/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username,
+      password,
+    }),
+  })
+    .then(response => response.json())
+    .then(json => {
+      const { authToken, userInfo } = json;
+      localStorage.setItem('token', authToken);
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+      localStorage.setItem('loggedIn', true);
+      dispatch(loginUserSuccess(authToken, userInfo, true));
+    })
+    .catch(error => console.log(error));
+};

@@ -10,6 +10,7 @@ export default function Field(props) {
           className="input is-medium"
           type={props.type}
           placeholder={props.placeholder}
+          required
         />
       </div>
     </div>

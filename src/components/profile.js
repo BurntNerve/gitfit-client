@@ -38,8 +38,6 @@ export function Profile(props) {
   );
 }
 
-const mapStateToProps = state => ({
-  currentUser: state.workoutReducer.currentUser,
-});
+const mapStateToProps = state => ({ currentUser: state.user.loggedIn });
 
 export default connect(mapStateToProps)(Profile);

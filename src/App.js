@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Navbar from './components/navbar';
 import Landing from './components/landing';
 import Registration from './components/registration';
@@ -9,7 +10,16 @@ import WorkoutLog from './components/workout-log';
 import Footer from './components/footer';
 import './App.css';
 
-class App extends Component {
+import * as actions from './actions';
+
+export class App extends Component {
+  componentDidMount() {
+    const authToken = localStorage.getItem('token');
+    const userInfo = localStorage.getItem('userInfo');
+    const loggedIn = localStorage.getItem('loggedIn');
+    this.props.dispatch(actions.loginUserSuccess(authToken, userInfo, loggedIn));
+  }
+
   render() {
     return (
       <Router>
@@ -27,4 +37,5 @@ class App extends Component {
   }
 }
 
-export default App;
+// export default App;
+export default connect()(App);

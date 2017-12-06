@@ -156,7 +156,10 @@ const mapStateToProps = state => {
   if (state.workoutReducer.workouts.length === 0) {
     return {
       workouts: state.workoutReducer.workouts,
-      goals: state.workoutReducer.goals,
+      goals: {
+        startingWeight: state.user.data.currentWeight,
+        goalWeight: state.user.data.goalWeight,
+      },
       lastWorkout: {
         firstWeight: 45,
         secondWeight: 45,
