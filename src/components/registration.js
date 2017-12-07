@@ -1,11 +1,16 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Route, Redirect } from 'react-router-dom';
 import SignUp from './sign-up';
 import LogIn from './log-in';
 import './registration.css';
 
-export default function Registration(props) {
+export function Registration(props) {
   //
+  if (props.loggedIn) {
+    console.log(props.loggedIn);
+    return <Redirect to={{ pathname: '/profile' }} />;
+  }
   return (
     <section className="section sign-up-container">
       <div className="container">
@@ -18,3 +23,9 @@ export default function Registration(props) {
     </section>
   );
 }
+
+const mapStateToProps = state => ({
+  loggedIn: state.authReducer.currentUser !== null,
+});
+
+export default connect(mapStateToProps)(Registration);

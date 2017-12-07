@@ -39,3 +39,7 @@
   background: -moz-linear-gradient(top left, #ff5300, #d80000);
   background: linear-gradient(top left, #ff5300, #d80000);*/
 }
+
+.fieldWarning {
+  color: #ff0000;
+}

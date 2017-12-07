@@ -1,7 +1,6 @@
 import * as actions from '../actions';
 
 const initialState = {
-  currentUser: 'seanlbray',
   goals: {
     startingWeight: 164,
     goalWeight: 180,
@@ -182,22 +181,6 @@ const workoutReducer = (state = initialState, action) => {
       currentExerciseCounter: state.currentExerciseCounter,
       currentExerciseSets: ExerciseSet,
       newWorkout: state.newWorkout,
-    });
-  } else if (action.type === actions.SAVE_WORKOUT) {
-    //
-    const updatedWorkout = Object.assign(
-      {},
-      state.newWorkout,
-      action.infoObject,
-    );
-
-    return Object.assign({}, state, {
-      currentUser: state.currentUser,
-      workouts: [...state.workouts, updatedWorkout],
-      activeClasses: state.activeClasses,
-      currentExerciseCounter: 0,
-      currentExerciseSets: ['5', '5', '5', '5', '5'],
-      newWorkout: {},
     });
   } else if (action.type === actions.UPDATE_WEIGHT) {
     //

@@ -6,14 +6,14 @@ export function ProgressChartTile(props) {
   if (props.workouts.length > 0) {
     let change;
     let changePercent;
+    console.log(props.mostRecentWeight);
     const progress = () => {
       //
-      const goalAmount = props.goals.goalWeight - props.goals.startingWeight;
-      const progressAmount =
-        props.mostRecentWeight - props.goals.startingWeight;
-      changePercent = progressAmount / props.goals.startingWeight * 100;
+      const goalAmount = props.goalWeight - props.startingWeight;
+      const progressAmount = props.mostRecentWeight - props.startingWeight;
+      changePercent = progressAmount / props.startingWeight * 100;
       const progressPercent = progressAmount / goalAmount * 100;
-      if (props.mostRecentWeight > props.goals.startingWeight) {
+      if (props.mostRecentWeight > props.startingWeight) {
         change = 'up';
       } else {
         change = 'down';
@@ -45,10 +45,10 @@ export function ProgressChartTile(props) {
       <article className="tile is-child notification has-text-centered">
         <p className="title is-size-2">Weight</p>
         <h2 className="title is-size-5 has-text-left">
-          Initial Weight: {props.goals.startingWeight}lbs
+          Initial Weight: {props.startingWeight}lbs
         </h2>
         <h2 className="title is-size-5 has-text-left">
-          Goal Weight: {props.goals.goalWeight}lbs
+          Goal Weight: {props.goalWeight}lbs
         </h2>
         <label className="label has-text-left">Add your weight in lbs.</label>
         <WeightField />
@@ -58,19 +58,23 @@ export function ProgressChartTile(props) {
 }
 
 const mapStateToProps = state => {
-  if (state.workoutReducer.workouts.length > 0) {
+  if (state.authReducer.currentUser.workouts.length > 0) {
     return {
-      workouts: state.workoutReducer.workouts,
-      goals: state.workoutReducer.goals,
+      workouts: state.authReducer.currentUser.workouts,
+      // goals: state.authReducer.currentUser.goals,
+      startingWeight: state.authReducer.currentUser.currentWeight,
+      goalWeight: state.authReducer.currentUser.goalWeight,
       mostRecentWeight:
-        state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1]
-          .bodyWeight,
+        state.authReducer.currentUser.workouts[
+          state.authReducer.currentUser.workouts.length - 1
+        ].bodyWeight,
     };
   }
   return {
-    workouts: state.workoutReducer.workouts,
-    goals: state.workoutReducer.goals,
-    mostRecentWeight: state.workoutReducer.goals.startingWeight,
+    workouts: state.authReducer.currentUser.workouts,
+    startingWeight: state.authReducer.currentUser.currentWeight,
+    goalWeight: state.authReducer.currentUser.goalWeight,
+    mostRecentWeight: state.authReducer.currentUser.currentWeight,
   };
 };
 

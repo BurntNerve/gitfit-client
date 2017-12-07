@@ -3,17 +3,19 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import BurgerMenu from './burger-menu';
 
+import { clearAuthToken } from '../local-storage';
 import * as actions from '../actions';
 
 import './navbar.css';
 
 export class Navbar extends React.Component {
+  logOut() {
+    this.props.dispatch(actions.setCurrentUser(null));
+    this.props.dispatch(actions.setAuthToken(null));
+    clearAuthToken();
+  }
   render() {
-    const handleLogOut = () => {
-      this.props.dispatch(actions.handleLogOut());
-    };
-
-    if (!this.props.token) {
+    if (!this.props.loggedIn) {
       return (
         <nav className="navbar is-fixed-top">
           <div className="navbar-brand">
@@ -72,7 +74,7 @@ export class Navbar extends React.Component {
           <div className="navbar-start">
             <div
               className="navbar-item log-out-button"
-              onClick={() => handleLogOut()}
+              onClick={() => this.logOut()}
             >
               <span className="control">
                 <span className="subtitle is-size-6">Log Out</span>
@@ -102,7 +104,7 @@ export class Navbar extends React.Component {
 
 const mapStateToProps = state => ({
   burgerActive: state.workoutReducer.activeClasses.burgerMenu,
-  token: state.user.token,
+  loggedIn: state.authReducer.currentUser !== null,
 });
 
 export default connect(mapStateToProps)(Navbar);

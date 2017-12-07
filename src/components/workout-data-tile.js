@@ -8,6 +8,11 @@ import * as actions from '../actions';
 
 export function WorkoutDataTile(props) {
   //
+  const handleSaveWorkout = workoutInfo => {
+    //
+    props.dispatch(actions.saveWorkout(workoutInfo));
+  };
+
   let newWorkoutType;
   let newWorkoutExercises;
   let newFirstExerciseWeight;
@@ -52,6 +57,7 @@ export function WorkoutDataTile(props) {
   ];
 
   const firstInfo = {
+    username: props.currentUser,
     date: String(moment().format('MMM Do YYYY')),
     type: newWorkoutType,
     firstExercise: newWorkoutExercises[0],
@@ -144,7 +150,7 @@ export function WorkoutDataTile(props) {
           <Button
             newClasses="submit-button is-dark"
             text="Save Workout"
-            onClick={() => props.dispatch(actions.saveWorkout(thirdInfo))}
+            onClick={() => handleSaveWorkout(thirdInfo)}
           />
         </article>
       </div>
@@ -153,12 +159,13 @@ export function WorkoutDataTile(props) {
 }
 
 const mapStateToProps = state => {
-  if (state.workoutReducer.workouts.length === 0) {
+  if (state.authReducer.currentUser.workouts.length === 0) {
     return {
-      workouts: state.workoutReducer.workouts,
+      currentUser: state.authReducer.currentUser.username,
+      workouts: state.authReducer.workouts,
       goals: {
-        startingWeight: state.user.data.currentWeight,
-        goalWeight: state.user.data.goalWeight,
+        startingWeight: state.authReducer.currentUser.currentWeight,
+        goalWeight: state.authReducer.currentUser.goalWeight,
       },
       lastWorkout: {
         firstWeight: 45,
@@ -174,23 +181,28 @@ const mapStateToProps = state => {
       currentExerciseCounter: state.workoutReducer.currentExerciseCounter,
       newWorkout: state.workoutReducer.newWorkout,
     };
-  } else if (state.workoutReducer.workouts.length === 1) {
+  } else if (state.authReducer.currentUser.workouts.length === 1) {
     return {
-      workouts: state.workoutReducer.workouts,
+      currentUser: state.authReducer.currentUser.username,
+      workouts: state.authReducer.currentUser.workouts,
       goals: state.workoutReducer.goals,
       lastWorkout:
-        state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1],
+        state.authReducer.currentUser.workouts[
+          state.authReducer.currentUser.workouts.length - 1
+        ],
       lastWorkoutSameType: {
         firstWeight: 45,
         secondWeight: 45,
         thirdWeight: 45,
       },
       mostRecentWorkoutType:
-        state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1]
-          .type || 'a',
+        state.authReducer.currentUser.workouts[
+          state.authReducer.currentUser.workouts.length - 1
+        ].type || 'a',
       firstSuccess:
-        state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1]
-          .firstSucceeded,
+        state.authReducer.currentUser.workouts[
+          state.authReducer.currentUser.workouts.length - 1
+        ].firstSucceeded,
       secondSuccess: false,
       thirdSuccess: false,
       currentExerciseCounter: state.workoutReducer.currentExerciseCounter,
@@ -199,25 +211,35 @@ const mapStateToProps = state => {
     };
   }
   return {
-    workouts: state.workoutReducer.workouts,
+    currentUser: state.authReducer.currentUser.username,
+    workouts: state.authReducer.currentUser.workouts,
     lastWorkout:
-      state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1],
+      state.authReducer.currentUser.workouts[
+        state.authReducer.currentUser.workouts.length - 1
+      ],
     lastWorkoutSameType:
-      state.workoutReducer.workouts[state.workoutReducer.workouts.length - 2],
+      state.authReducer.currentUser.workouts[
+        state.authReducer.currentUser.workouts.length - 2
+      ],
     mostRecentWorkoutType:
-      state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1]
-        .type || 'a',
+      state.authReducer.currentUser.workouts[
+        state.authReducer.currentUser.workouts.length - 1
+      ].type || 'a',
     firstSuccess:
-      state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1]
-        .firstSucceeded,
+      state.authReducer.currentUser.workouts[
+        state.authReducer.currentUser.workouts.length - 1
+      ].firstSucceeded,
     secondSuccess:
-      state.workoutReducer.workouts[state.workoutReducer.workouts.length - 2]
-        .secondSucceeded ||
-      state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1]
-        .secondSucceeded,
+      state.authReducer.currentUser.workouts[
+        state.authReducer.currentUser.workouts.length - 2
+      ].secondSucceeded ||
+      state.authReducer.currentUser.workouts[
+        state.authReducer.currentUser.workouts.length - 1
+      ].secondSucceeded,
     thirdSuccess:
-      state.workoutReducer.workouts[state.workoutReducer.workouts.length - 2]
-        .thirdSucceeded,
+      state.authReducer.currentUser.workouts[
+        state.authReducer.currentUser.workouts.length - 2
+      ].thirdSucceeded,
     currentExerciseCounter: state.workoutReducer.currentExerciseCounter,
     currentExerciseSets: state.workoutReducer.currentExerciseSets,
     newWorkout: state.workoutReducer.newWorkout,

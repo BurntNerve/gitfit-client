@@ -43,16 +43,18 @@ export class WeightField extends React.Component {
 }
 
 const mapStateToProps = state => {
-  if (state.workoutReducer.workouts.length > 0) {
+  if (state.authReducer.currentUser.workouts.length > 0) {
     return {
       mostRecent:
-        state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1],
+        state.authReducer.currentUser.workouts[
+          state.authReducer.currentUser.workouts.length - 1
+        ],
       warning: state.workoutReducer.activeClasses.warning,
     };
   }
   return {
     mostRecent: {
-      bodyWeight: state.workoutReducer.goals.startingWeight + 1,
+      bodyWeight: state.authReducer.currentWeight + 1,
     },
     warning: state.workoutReducer.activeClasses.warning,
   };

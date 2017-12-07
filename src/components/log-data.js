@@ -166,7 +166,7 @@ export function LogData(props) {
 }
 
 const mapStateToProps = (state, props) => ({
-  workout: state.workoutReducer.workouts[props.index],
+  workout: state.authReducer.currentUser.workouts[props.index],
   currentExerciseSets: state.workoutReducer.currentExerciseSets,
   currentExerciseCounter: state.workoutReducer.currentExerciseCounter,
   newWorkout: state.workoutReducer.newWorkout,

@@ -10,15 +10,17 @@ export class WorkoutStatsTile extends React.Component {
         this.props.mostRecentWorkout.secondWeight,
         this.props.mostRecentWorkout.thirdWeight,
       );
-
-      if (strongestLiftWeight === this.props.mostRecentWorkout.firstWeight) {
+      if (
+        strongestLiftWeight === Number(this.props.mostRecentWorkout.firstWeight)
+      ) {
         strongestLift = this.props.mostRecentWorkout.firstExercise;
       } else if (
-        strongestLiftWeight === this.props.mostRecentWorkout.secondWeight
+        strongestLiftWeight ===
+        Number(this.props.mostRecentWorkout.secondWeight)
       ) {
         strongestLift = this.props.mostRecentWorkout.secondExercise;
       } else if (
-        strongestLiftWeight === this.props.mostRecentWorkout.thirdWeight
+        strongestLiftWeight === Number(this.props.mostRecentWorkout.thirdWeight)
       ) {
         strongestLift = this.props.mostRecentWorkout.thirdExercise;
       }
@@ -105,12 +107,14 @@ export class WorkoutStatsTile extends React.Component {
 }
 
 const mapStateToProps = state => {
-  if (state.workoutReducer.workouts.length > 0) {
+  if (state.authReducer.currentUser.workouts.length > 0) {
     return {
-      workouts: state.workoutReducer.workouts,
-      totalWorkouts: state.workoutReducer.workouts.length,
+      workouts: state.authReducer.currentUser.workouts,
+      totalWorkouts: state.authReducer.currentUser.workouts.length,
       mostRecentWorkout:
-        state.workoutReducer.workouts[state.workoutReducer.workouts.length - 1],
+        state.authReducer.currentUser.workouts[
+          state.authReducer.currentUser.workouts.length - 1
+        ],
     };
   }
   return {
