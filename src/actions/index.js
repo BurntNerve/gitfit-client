@@ -187,7 +187,6 @@ export const triggerWarning = warningMessage => ({
 });
 
 export const updateWorkout = (infoObject, logIndex) => (dispatch, getState) => {
-  //
   const update = Object.assign(
     {},
     getState().workoutReducer.newWorkout,
