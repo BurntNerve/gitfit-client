@@ -8,8 +8,16 @@ export class WeightField extends React.Component {
 
   render() {
     const verifyWeight = weightInput => {
-      if (weightInput === '') {
+      console.log(typeof weightInput);
+      if (
+        weightInput === '' ||
+        Number(weightInput) !== parseInt(weightInput, 10)
+      ) {
+        this.weightField.value = '';
         this.props.dispatch(actions.triggerWarning('Enter a number.'));
+      } else if (this.props.empty) {
+        this.weightField.value = '';
+        this.props.dispatch(actions.triggerWarning('Workout once first.'));
       } else {
         this.props.dispatch(actions.updateWeight(weightInput));
         this.weightField.value = '';
@@ -45,6 +53,7 @@ export class WeightField extends React.Component {
 const mapStateToProps = state => {
   if (state.authReducer.currentUser.workouts.length > 0) {
     return {
+      empty: false,
       mostRecent:
         state.authReducer.currentUser.workouts[
           state.authReducer.currentUser.workouts.length - 1
@@ -53,8 +62,9 @@ const mapStateToProps = state => {
     };
   }
   return {
+    empty: true,
     mostRecent: {
-      bodyWeight: state.authReducer.currentWeight + 1,
+      bodyWeight: Number(state.authReducer.currentUser.currentWeight) + 1,
     },
     warning: state.workoutReducer.activeClasses.warning,
   };

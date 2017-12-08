@@ -13,7 +13,12 @@ export class Navbar extends React.Component {
     this.props.dispatch(actions.setCurrentUser(null));
     this.props.dispatch(actions.setAuthToken(null));
     clearAuthToken();
+    this.props.dispatch(actions.burgerActive());
   }
+  burgerActive() {
+    this.props.dispatch(actions.burgerActive());
+  }
+
   render() {
     if (!this.props.loggedIn) {
       return (
@@ -24,7 +29,7 @@ export class Navbar extends React.Component {
                 <strong>GitFit</strong>
               </h1>
             </Link>
-            <BurgerMenu onClick={() => console.log('clicked')} />
+            <BurgerMenu />
           </div>
 
           <div
@@ -34,14 +39,14 @@ export class Navbar extends React.Component {
             }`}
           >
             <div className="navbar-start">
-              <div className="navbar-item">
+              <div className="navbar-item" onClick={() => this.burgerActive()}>
                 <Link to="/registration/login">
                   <span className="control">
                     <span className="subtitle is-size-6">Login</span>
                   </span>
                 </Link>
               </div>
-              <div className="navbar-item">
+              <div className="navbar-item" onClick={() => this.burgerActive()}>
                 <Link to="/resources">
                   <span className="control">
                     <span className="subtitle is-size-6">Resources</span>
@@ -62,7 +67,7 @@ export class Navbar extends React.Component {
               <strong>GitFit</strong>
             </h1>
           </Link>
-          <BurgerMenu onClick={() => console.log('clicked')} />
+          <BurgerMenu />
         </div>
 
         <div
@@ -80,14 +85,14 @@ export class Navbar extends React.Component {
                 <span className="subtitle is-size-6">Log Out</span>
               </span>
             </div>
-            <div className="navbar-item">
+            <div className="navbar-item" onClick={() => this.burgerActive()}>
               <Link to="/profile">
                 <span className="control">
                   <span className="subtitle is-size-6">Profile</span>
                 </span>
               </Link>
             </div>
-            <div className="navbar-item">
+            <div className="navbar-item" onClick={() => this.burgerActive()}>
               <Link to="/resources">
                 <span className="control">
                   <span className="subtitle is-size-6">Resources</span>

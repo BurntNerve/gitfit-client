@@ -15,13 +15,25 @@ export const normalizeResponseErrors = res => {
       return res.json().then(err => Promise.reject(err));
     }
 
-    return Promise.reject({
+    return Promise.reject(new Error({
       code: res.status,
       message: res.statusText,
-    });
+    }));
   }
   return res;
 };
+
+export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
+export const setAuthToken = authToken => ({
+  type: SET_AUTH_TOKEN,
+  authToken,
+});
+
+export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const setCurrentUser = currentUser => ({
+  type: SET_CURRENT_USER,
+  currentUser,
+});
 
 const storeAuthInfo = (authToken, dispatch) => {
   const decodedToken = jwtDecode(authToken);
@@ -46,11 +58,64 @@ export const modalActive = logIndex => ({
   logIndex,
 });
 
-export const DELETE_WORKOUT = 'DELETE_WORKOUT';
-export const deleteWorkout = logIndex => ({
-  type: DELETE_WORKOUT,
-  logIndex,
+export const RESET_COUNTER = 'RESET_COUNTER';
+export const resetCounter = () => ({
+  type: RESET_COUNTER,
 });
+
+export const FETCH_PROTECTED_DATA_SUCCESS = 'FETCH_PROTECTED_DATA_SUCCESS';
+export const fetchProtectedDataSuccess = data => ({
+  type: FETCH_PROTECTED_DATA_SUCCESS,
+  data,
+});
+
+export const FETCH_PROTECTED_DATA_ERROR = 'FETCH_PROTECTED_DATA_ERROR';
+export const fetchProtectedDataError = error => ({
+  type: FETCH_PROTECTED_DATA_ERROR,
+  error,
+});
+
+export const fetchProtectedData = () => (dispatch, getState) => {
+  const authToken = getState().authReducer.authToken;
+  return fetch(`${API_BASE_URL}/protected`, {
+    method: 'GET',
+    headers: {
+      // Provide our auth token as credentials
+      Authorization: `Bearer ${authToken}`,
+    },
+  })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .then(({ data }) => dispatch(fetchProtectedDataSuccess(data)))
+    .catch(err => {
+      dispatch(fetchProtectedDataError(err));
+    });
+};
+
+// export const DELETE_WORKOUT = 'DELETE_WORKOUT';
+// export const deleteWorkout = logIndex => ({
+//   type: DELETE_WORKOUT,
+//   logIndex,
+// });
+
+export const deleteWorkout = logIndex => (dispatch, getState) => {
+  //
+  fetch(`${API_BASE_URL}/auth/deleteWorkout`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      logIndex,
+      username: getState().authReducer.currentUser.username,
+    }),
+  })
+    .then(res => res.json())
+    .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
+    .then(() => dispatch(fetchProtectedData()))
+    .then(() => dispatch(resetCounter()))
+    .catch(err => console.log(err));
+};
 
 export const CHANGE_REPS = 'CHANGE_REPS';
 export const changeReps = (amount, index) => ({
@@ -89,14 +154,31 @@ export const saveWorkout = infoObject => (dispatch, getState) => {
   })
     .then(res => res.json())
     .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
+    .then(() => dispatch(fetchProtectedData()))
+    .then(() => dispatch(resetCounter()))
     .catch(err => console.log(err));
 };
 
-export const UPDATE_WEIGHT = 'UPDATE_WEIGHT';
-export const updateWeight = newWeight => ({
-  type: UPDATE_WEIGHT,
-  newWeight,
-});
+export const updateWeight = newWeight => (dispatch, getState) => {
+  console.log(newWeight);
+  fetch(`${API_BASE_URL}/auth/updateWeight`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      bodyWeight: newWeight,
+      username: getState().authReducer.currentUser.username,
+    }),
+  })
+    .then(res => res.json())
+    .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
+    .then(() => dispatch(fetchProtectedData()))
+    .then(() => {
+      dispatch(resetCounter());
+    })
+    .catch(err => console.log(err));
+};
 
 export const TRIGGER_WARNING = 'TRIGGER_WARNING';
 export const triggerWarning = warningMessage => ({
@@ -104,24 +186,33 @@ export const triggerWarning = warningMessage => ({
   warningMessage,
 });
 
-export const UPDATE_WORKOUT = 'UPDATE_WORKOUT';
-export const updateWorkout = (infoObject, index) => ({
-  type: UPDATE_WORKOUT,
-  infoObject,
-  index,
-});
-
-export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
-export const setAuthToken = authToken => ({
-  type: SET_AUTH_TOKEN,
-  authToken,
-});
-
-export const SET_CURRENT_USER = 'SET_CURRENT_USER';
-export const setCurrentUser = currentUser => ({
-  type: SET_CURRENT_USER,
-  currentUser,
-});
+export const updateWorkout = (infoObject, logIndex) => (dispatch, getState) => {
+  //
+  const update = Object.assign(
+    {},
+    getState().workoutReducer.newWorkout,
+    infoObject,
+  );
+  fetch(`${API_BASE_URL}/auth/updateWorkout`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      update,
+      logIndex,
+      username: getState().authReducer.currentUser.username,
+    }),
+  })
+    .then(res => res.json())
+    .then(({ authToken }) => storeAuthInfo(authToken, dispatch))
+    .then(() => dispatch(fetchProtectedData()))
+    .then(() => {
+      dispatch(resetCounter());
+      dispatch(modalActive());
+    })
+    .catch(err => console.log(err));
+};
 
 // Encode a JS string as Base-64 encoded UTF-8
 // const base64EncodingUTF8 = str => {
@@ -259,12 +350,12 @@ export const registerUser = user => dispatch =>
 // };
 
 export const refreshAuthToken = () => (dispatch, getState) => {
-  const authToken = getState().authReducer.authToken;
+  const authorizationToken = getState().authReducer.authToken;
   return fetch(`${API_BASE_URL}/auth/refresh`, {
     method: 'POST',
     headers: {
       // Provide our existing token as credentials to get a new one
-      Authorization: `Bearer ${authToken}`,
+      Authorization: `Bearer ${authorizationToken}`,
     },
   })
     .then(res => normalizeResponseErrors(res))
@@ -277,36 +368,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
         // are invalid or expired, so clear them and sign us out
         dispatch(setCurrentUser(null));
         dispatch(setAuthToken(null));
-        clearAuthToken(authToken);
+        clearAuthToken(authorizationToken);
       }
-    });
-};
-
-export const FETCH_PROTECTED_DATA_SUCCESS = 'FETCH_PROTECTED_DATA_SUCCESS';
-export const fetchProtectedDataSuccess = data => ({
-  type: FETCH_PROTECTED_DATA_SUCCESS,
-  data,
-});
-
-export const FETCH_PROTECTED_DATA_ERROR = 'FETCH_PROTECTED_DATA_ERROR';
-export const fetchProtectedDataError = error => ({
-  type: FETCH_PROTECTED_DATA_ERROR,
-  error,
-});
-
-export const fetchProtectedData = () => (dispatch, getState) => {
-  const authToken = getState().authReducer.authToken;
-  return fetch(`${API_BASE_URL}/protected`, {
-    method: 'GET',
-    headers: {
-      // Provide our auth token as credentials
-      Authorization: `Bearer ${authToken}`,
-    },
-  })
-    .then(res => normalizeResponseErrors(res))
-    .then(res => res.json())
-    .then(({ data }) => dispatch(fetchProtectedDataSuccess(data)))
-    .catch(err => {
-      dispatch(fetchProtectedDataError(err));
     });
 };

@@ -7,12 +7,14 @@ import * as actions from '../actions';
 
 export function LogData(props) {
   const modalActive = () => {
+    console.log(props.index);
     props.dispatch(actions.modalActive(props.index));
   };
 
   const deleteWorkout = () => {
     props.dispatch(actions.deleteWorkout(props.index));
   };
+
   const currentWorkoutExercises =
     props.workout.type === 'a'
       ? ['Squat', 'Bench Press', 'Barbell Row']
@@ -144,7 +146,7 @@ export function LogData(props) {
                   props.dispatch(actions.updateWorkout(
                       {
                         thirdSets: props.currentExerciseSets,
-                        modalActive: false,
+                        // modalActive: false,
                       },
                       props.index,
                     ))
@@ -166,7 +168,7 @@ export function LogData(props) {
 }
 
 const mapStateToProps = (state, props) => ({
-  workout: state.authReducer.currentUser.workouts[props.index],
+  workout: state.protectedReducer.data.workouts[props.index],
   currentExerciseSets: state.workoutReducer.currentExerciseSets,
   currentExerciseCounter: state.workoutReducer.currentExerciseCounter,
   newWorkout: state.workoutReducer.newWorkout,

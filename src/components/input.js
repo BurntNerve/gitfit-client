@@ -33,7 +33,9 @@ export default class Input extends React.Component {
             id={this.props.input.name}
             className="input is-medium"
             type={this.props.type}
-            ref={input => (this.input = input)}
+            ref={input => {
+              this.input = input;
+            }}
           />
         </div>
         {/* {error}

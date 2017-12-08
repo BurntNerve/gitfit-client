@@ -148,7 +148,7 @@ export function WorkoutDataTile(props) {
             weight={newExerciseWeights[props.currentExerciseCounter]}
           />
           <Button
-            newClasses="submit-button is-dark"
+            newClasses="submit-button is-success"
             text="Save Workout"
             onClick={() => handleSaveWorkout(thirdInfo)}
           />
