@@ -65,6 +65,7 @@ const initialState = {
     burgerMenu: false,
     navMenu: false,
     warning: undefined,
+    submitting: false,
   },
   currentExerciseCounter: 0,
   currentExerciseSets: ['5', '5', '5', '5', '5'],
@@ -162,32 +163,20 @@ const workoutReducer = (state = initialState, action) => {
       currentExerciseSets: state.currentExerciseSets,
       newWorkout: state.newWorkout,
     });
+  } else if (action.type === actions.TRIGGER_SUBMITTING) {
+    const newActiveClasses = Object.assign({}, state.activeClasses, {
+      ...state.activeClasses,
+      submitting: !state.activeClasses.submitting,
+    });
+    return Object.assign({}, state, {
+      currentUser: state.currentUser,
+      workouts: state.workouts,
+      activeClasses: newActiveClasses,
+      currentExerciseCounter: state.currentExerciseCounter,
+      currentExerciseSets: state.currentExerciseSets,
+      newWorkout: state.newWorkout,
+    });
   }
-  // else if (action.type === actions.UPDATE_WORKOUT) {
-  //   //
-  //   const updateForWorkout = Object.assign(
-  //     {},
-  //     state.newWorkout,
-  //     action.infoObject,
-  //   );
-  //   console.log(updateForWorkout);
-  //   const updatedWorkout = state.workouts.map((workout, index) => {
-  //     if (index !== action.index) {
-  //       console.log(workout.date);
-  //       return workout;
-  //     }
-  //     return Object.assign({}, workout, updateForWorkout);
-  //   });
-  //   console.log(updatedWorkout);
-  //   return Object.assign({}, state, {
-  //     currentUser: state.currentUser,
-  //     workouts: updatedWorkout,
-  //     activeClasses: state.activeClasses,
-  //     currentExerciseCounter: 0,
-  //     currentExerciseSets: ['5', '5', '5', '5', '5'],
-  //     newWorkout: {},
-  //   });
-  // }
   return state;
 };
 

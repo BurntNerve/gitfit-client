@@ -73,7 +73,7 @@ export function LogData(props) {
                 weight={currentWorkoutWeights[props.currentExerciseCounter]}
               />
               <Button
-                newClasses="submit-button is-dark"
+                newClasses="submit-button is-profile-git"
                 text="Next Exercise"
                 onClick={() =>
                   props.dispatch(actions.nextExercise(props.currentExerciseCounter === 0
@@ -146,7 +146,6 @@ export function LogData(props) {
                   props.dispatch(actions.updateWorkout(
                       {
                         thirdSets: props.currentExerciseSets,
-                        // modalActive: false,
                       },
                       props.index,
                     ))

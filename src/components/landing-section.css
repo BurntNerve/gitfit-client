@@ -6,15 +6,6 @@
   background-color: hsl(0, 0%, 29%);
 }
 
-.secondContent {
-  /*background-color: #acd4e9;*/
-  /*background: url(../backgroundBlue.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;*/
-}
-
 .column.has-vertically-aligned-content {
   display: flex;
   flex-direction: column;

@@ -54,8 +54,6 @@ export class Profile extends React.Component {
   }
 }
 
-// const mapStateToProps = state => ({ currentUser: state.user.loggedIn });
-
 const mapStateToProps = state => {
   const { currentUser } = state.authReducer;
   return {

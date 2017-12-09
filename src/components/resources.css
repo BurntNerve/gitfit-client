@@ -8,10 +8,15 @@
 }
 
 .odd-section {
-  background-color: hsl(348, 100%, 61%);
+  background-color: hsl(0, 0%, 98%) !important;
+  color: #6b7c93 !important;
   min-height: 250px;
 }
 
 .link {
   margin: 0 !important;
+}
+
+.even-link:hover {
+  color: white !important;
 }

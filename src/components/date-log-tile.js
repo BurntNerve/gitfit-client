@@ -4,7 +4,6 @@ import DateInfoTile from './date-info-tile';
 import WorkoutLogTile from './workout-log-tile';
 
 export default function DateLogTile(props) {
-  //
   return (
     <div className="tile is-parent is-vertical">
       <DateInfoTile />

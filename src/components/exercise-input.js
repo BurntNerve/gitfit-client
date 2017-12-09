@@ -30,7 +30,6 @@ export default function ExerciseInput(props) {
   }
 
   if (props.exercise === 'Deadlift') {
-    //
     return (
       <div className="exerciseInput field has-text-centered">
         <h1 className="title exerciseTitle is-size-3">

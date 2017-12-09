@@ -2,18 +2,17 @@ import React from 'react';
 import './resources.css';
 
 export default function Resources() {
-  //
   return (
-    <section className="section resource-section">
+    <section className="section resource-section is-profile-git">
       <div className="container has-text-left">
-        <h1 className="title is-size-1">Resources</h1>
+        <h1 className="title is-size-1 has-text-white-bis">Resources</h1>
         <hr />
         <section className="section">
           <div className="container">
             <div className="columns odd-section">
               <div className="column">
-                <h1 className="title has-text-white-bis">Form</h1>
-                <h2 className="subtitle has-text-white-bis">
+                <h1 className="title">Form</h1>
+                <h2 className="subtitle">
                   The following three sections are the core tenents of leading a
                   healthy lifestyle. However, Form is what allows you to capture
                   the full benefits of your movements as well as give you the
@@ -23,21 +22,21 @@ export default function Resources() {
                 </h2>
               </div>
               <div className="column">
-                <h1 className="title has-text-white-bis">Links:</h1>
+                <h1 className="title">Links:</h1>
                 <h2 className="subtitle link">
                   <a
-                    className="has-text-white-bis"
+                    className="is-size-4"
                     href="https://www.youtube.com/watch?v=EP2g3Sj3qSw"
                   >
-                    https://www.youtube.com/watch?v=EP2g3Sj3qSw
+                    Complete Video Of Workout A
                   </a>
                 </h2>
                 <h2 className="subtitle link">
                   <a
-                    className="has-text-white-bis"
+                    className="is-size-4"
                     href="https://www.youtube.com/watch?v=ro3Mh9o7JPU"
                   >
-                    https://www.youtube.com/watch?v=ro3Mh9o7JPU
+                    Complete Video Of Workout B
                   </a>
                 </h2>
               </div>
@@ -59,18 +58,18 @@ export default function Resources() {
                 <h1 className="title has-text-white-bis">Links:</h1>
                 <h2 className="subtitle link">
                   <a
-                    className="has-text-white-bis"
+                    className="is-size-4 even-link"
                     href="https://ss.fitness/#diet"
                   >
-                    https://ss.fitness/#diet
+                    SimpleScience.com - Diet Advice
                   </a>
                 </h2>
                 <h2 className="subtitle link">
                   <a
-                    className="has-text-white-bis"
+                    className="is-size-4 even-link"
                     href="https://www.bodybuilding.com/fun/nutrient.htm"
                   >
-                    https://www.bodybuilding.com/fun/nutrient.htm
+                    Bodybuilding.com - Nutrition Advice
                   </a>
                 </h2>
               </div>
@@ -81,30 +80,24 @@ export default function Resources() {
           <div className="container">
             <div className="columns odd-section">
               <div className="column">
-                <h1 className="title has-text-white-bis">Exercise</h1>
-                <h2 className="subtitle has-text-white-bis">
+                <h1 className="title">Exercise</h1>
+                <h2 className="subtitle">
                   The routine that this program uses is called Stronglifts 5 x
                   5. It is a program that assumes no previous experience and
                   will help you grow stronger quite quickly.
                 </h2>
               </div>
               <div className="column">
-                <h1 className="title has-text-white-bis">Links:</h1>
+                <h1 className="title">Links:</h1>
 
                 <h2 className="subtitle link">
-                  <a
-                    className="has-text-white-bis"
-                    href="https://stronglifts.com/5x5/"
-                  >
-                    https://stronglifts.com/5x5/
+                  <a className="is-size-4" href="https://stronglifts.com/5x5/">
+                    Stronglifts.com - 5x5 Exercise Routine
                   </a>
                 </h2>
                 <h2 className="subtitle link">
-                  <a
-                    className="has-text-white-bis"
-                    href="https://ss.fitness/#exercise"
-                  >
-                    https://ss.fitness/#exercise
+                  <a className="is-size-4" href="https://ss.fitness/#exercise">
+                    SimpleScience.com - Importance of Exercise
                   </a>
                 </h2>
               </div>
@@ -127,18 +120,18 @@ export default function Resources() {
                 <h1 className="title has-text-white-bis">Links:</h1>
                 <h2 className="subtitle link">
                   <a
-                    className="has-text-white-bis"
+                    className="is-size-4 even-link"
                     href="https://www.psychologytoday.com/blog/finding-your-voice/201507/the-importance-rest"
                   >
-                    https://www.psychologytoday.com/blog/finding-your-voice/201507/the-importance-rest
+                    PhsycologyToday.com - The Importance of Rest
                   </a>
                 </h2>
                 <h2 className="subtitle link">
                   <a
-                    className="has-text-white-bis"
+                    className="even-link is-size-4"
                     href="http://healthysleep.med.harvard.edu/healthy/getting/overcoming/tips"
                   >
-                    http://healthysleep.med.harvard.edu/healthy/getting/overcoming/tips
+                    Harvard Medical - How to get Healthy Sleep
                   </a>
                 </h2>
               </div>

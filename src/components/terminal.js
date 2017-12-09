@@ -2,7 +2,6 @@ import React from 'react';
 import './terminal.css';
 
 export default function Terminal(props) {
-  //
   return (
     <div className="terminal has-text-left">
       <div className="topArea">

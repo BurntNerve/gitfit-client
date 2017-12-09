@@ -6,6 +6,11 @@ export const isTrimmed = value =>
 
 export const isNumber = value =>
   (Number(value) === parseInt(value, 10) ? undefined : 'Must be a number.');
+
+export const isPositive = value =>
+  (Number(value) === parseInt(value, 10) && parseInt(value, 10) > 0
+    ? undefined
+    : 'Must be a positive number.');
 export const length = length => value => {
   if (length.min && value.length < length.min) {
     return `Must be at least ${length.min} characters long`;

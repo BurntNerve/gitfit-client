@@ -7,9 +7,7 @@ import Button from './button';
 import * as actions from '../actions';
 
 export function WorkoutDataTile(props) {
-  //
   const handleSaveWorkout = workoutInfo => {
-    //
     props.dispatch(actions.saveWorkout(workoutInfo));
   };
 

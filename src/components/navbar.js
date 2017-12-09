@@ -39,13 +39,6 @@ export class Navbar extends React.Component {
             }`}
           >
             <div className="navbar-start">
-              {/* <div className="navbar-item" onClick={() => this.burgerActive()}>
-                <Link to="/registration/login">
-                  <span className="control">
-                    <span className="subtitle is-size-6">Login</span>
-                  </span>
-                </Link>
-              </div> */}
               <div className="navbar-item" onClick={() => this.burgerActive()}>
                 <Link to="/resources">
                   <span className="control">

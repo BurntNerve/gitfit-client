@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 export function DateInfoTile(props) {
-  //
-
   if (props.lastWorkout) {
     return (
       <article className="tile is-child notification has-text-left">

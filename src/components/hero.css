@@ -1,8 +1,6 @@
 .hero-body {
   min-height: 350px;
   background: linear-gradient( to right top, #051937, #121d37, #1b2136, #232536, #292a35);
-  /*background: url(../backgroundBlue.jpg) no-repeat center center fixed;*/
-  /*background: url(https://image.freepik.com/free-vector/web-designs-collection_1300-326.jpg) no-repeat center center fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

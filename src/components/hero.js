@@ -1,19 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import Terminal from './terminal';
 import Button from './button';
 import './hero.css';
 
 export function Hero(props) {
-  //
   if (props.loggedIn) {
     return (
       <section className="hero">
         <div className="hero-body">
           <div className="container">
             <h1 className="title is-size-1 ">Fitness for Developers</h1>
-            {/* <Terminal /> */}
+
             <Link to="/profile">
               <Button text="Dashboard" newClasses="sign-up is-medium is-dark" />
             </Link>
@@ -33,12 +31,12 @@ export function Hero(props) {
             GitFit is a tech-oriented platform dedicated to helping people begin
             their fitness journey.
           </h2>
-          {/* <Terminal /> */}
+
           <Link to="/registration">
             <strong>
               <Button
                 text="Create Account"
-                newClasses="sign-up is-medium is-danger"
+                newClasses="sign-up is-medium is-success"
               />
             </strong>
           </Link>
@@ -46,7 +44,7 @@ export function Hero(props) {
             <strong>
               <Button
                 text="Login"
-                newClasses="sign-up login is-medium is-success"
+                newClasses="sign-up login is-medium is-danger"
               />
             </strong>
           </Link>

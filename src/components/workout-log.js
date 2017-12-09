@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import Button from './button';
 import LogData from './log-data';
 
 import './workout-log.css';
@@ -30,9 +29,6 @@ export class WorkoutLog extends React.Component {
             <h1 className="title is-size-3-mobile is-size-1-tablet has-text-centered headline has-text-white-bis">
               Workout Log
             </h1>
-            {/* <Link to="/profile">
-              <Button text="Profile" newClasses="is-medium" />
-            </Link> */}
           </div>
           <div className="timeline is-centered">
             <header className="timeline-header">
@@ -52,9 +48,6 @@ export class WorkoutLog extends React.Component {
           <h1 className="title is-size-3-mobile is-size-1-tablet has-text-centered headline has-text-white-bis">
             Workout Log
           </h1>
-          {/* <Link to="/profile">
-            <Button text="Profile" newClasses="is-medium" />
-          </Link> */}
         </div>
         <div className="timeline is-centered">
           <header className="timeline-header">

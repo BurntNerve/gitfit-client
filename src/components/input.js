@@ -38,8 +38,6 @@ export default class Input extends React.Component {
             }}
           />
         </div>
-        {/* {error}
-        {warning} */}
       </div>
     );
   }

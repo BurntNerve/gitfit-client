@@ -6,7 +6,6 @@ import LogIn from './log-in';
 import './registration.css';
 
 export function Registration(props) {
-  //
   if (props.loggedIn) {
     console.log(props.loggedIn);
     return <Redirect to={{ pathname: '/profile' }} />;

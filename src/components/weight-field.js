@@ -4,17 +4,16 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 export class WeightField extends React.Component {
-  //
-
   render() {
     const verifyWeight = weightInput => {
       console.log(typeof weightInput);
       if (
         weightInput === '' ||
-        Number(weightInput) !== parseInt(weightInput, 10)
+        Number(weightInput) !== parseInt(weightInput, 10) ||
+        Number(weightInput) <= 0
       ) {
         this.weightField.value = '';
-        this.props.dispatch(actions.triggerWarning('Enter a number.'));
+        this.props.dispatch(actions.triggerWarning('Enter positive number.'));
       } else if (this.props.empty) {
         this.weightField.value = '';
         this.props.dispatch(actions.triggerWarning('Workout once first.'));
@@ -28,7 +27,7 @@ export class WeightField extends React.Component {
       <div className="field has-addons">
         <div className="control">
           <input
-            className="input"
+            className="input weight-input"
             required
             type="text"
             placeholder={`${this.props.warning ||
@@ -64,7 +63,7 @@ const mapStateToProps = state => {
   return {
     empty: true,
     mostRecent: {
-      bodyWeight: Number(state.authReducer.currentUser.currentWeight) + 1,
+      bodyWeight: Number(state.authReducer.currentUser.currentWeight),
     },
     warning: state.workoutReducer.activeClasses.warning,
   };

@@ -1,30 +1,27 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
+import { connect } from 'react-redux';
 import Input from './input';
 import { required, nonEmpty } from '../validators';
-// import { connect } from 'react-redux';
-// import Field from './field';
-// import Button from './button';
 
 import * as actions from '../actions';
 
 export class LogIn extends React.Component {
   onSubmit(values) {
+    this.props.dispatch(actions.triggerSubmitting());
     return this.props.dispatch(actions.logInUser(values.username, values.password));
   }
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  //   const username = event.target.username.value;
-  //   const password = event.target.password.value;
-  //
-  //   props.dispatch(actions.logInUser(username, password));
-  // };
   render() {
+    console.log(this.props.submitting);
+    let loading;
+    if (this.props.submitting) {
+      console.log('submitting');
+      loading = 'is-loading';
+    }
     let error;
-    console.log(this.props.error);
     if (this.props.error) {
       error = (
-        <div className="form-error" aria-live="polite">
+        <div className="form-error has-text-danger" aria-live="polite">
           {this.props.error}
         </div>
       );
@@ -50,17 +47,6 @@ export class LogIn extends React.Component {
                   validate={[required, nonEmpty]}
                 />
               </div>
-              {/* <div className="field-input">
-                <label className="label is-medium">Username</label>
-                <div className="control field-control">
-                  <input
-                    className="input is-medium"
-                    type="text"
-                    required
-                    name="username"
-                  />
-                </div>
-              </div> */}
               <div className="field-input">
                 <label className="label is-medium" htmlFor="password">
                   Password
@@ -72,20 +58,11 @@ export class LogIn extends React.Component {
                   id="password"
                   validate={[required, nonEmpty]}
                 />
-                {/* <label className="label is-medium">Password</label>
-                <div className="control field-control">
-                  <input
-                    className="input is-medium"
-                    type="password"
-                    required
-                    name="password"
-                  />
-                </div> */}
               </div>
               <div className="control has-text-centered field-control">
                 <button
                   type="submit"
-                  className="button submit-button is-danger"
+                  className={`button submit-button is-danger ${loading}`}
                   disabled={this.props.pristine || this.props.submitting}
                 >
                   Submit
@@ -98,6 +75,13 @@ export class LogIn extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  error: state.workoutReducer.activeClasses.warning,
+  submitting: state.workoutReducer.activeClasses.submitting,
+});
+
+LogIn = connect(mapStateToProps)(LogIn);
 
 export default reduxForm({
   form: 'login',
