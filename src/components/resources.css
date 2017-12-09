@@ -3,12 +3,12 @@
 }
 
 .even-section {
-  background-color: hsl(0, 0%, 21%);
+  background-color: #292a35;
   min-height: 250px;
 }
 
 .odd-section {
-  background-color: hsl(0, 0%, 71%);
+  background-color: hsl(348, 100%, 61%);
   min-height: 250px;
 }
 

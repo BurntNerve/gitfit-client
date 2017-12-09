@@ -43,7 +43,7 @@ export class WeightField extends React.Component {
           className="control"
           onClick={() => verifyWeight(this.weightField.value)}
         >
-          <a className="button is-dark">Update</a>
+          <a className="button is-danger">Update</a>
         </div>
       </div>
     );

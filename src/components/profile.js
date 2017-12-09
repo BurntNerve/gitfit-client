@@ -24,29 +24,31 @@ export class Profile extends React.Component {
 
     return (
       <section className="section profile-section">
-        <div className="container profile-container">
-          <h1 className="title has-text-white-bis is-size-4-mobile is-size-1-tablet has-text-centered">
-            Welcome, {this.props.username}
-          </h1>
+        <div clasName="tint">
+          <div className="container profile-container">
+            <h1 className="title has-text-white-bis is-size-4-mobile is-size-1-tablet has-text-centered">
+              Welcome, {this.props.username}
+            </h1>
 
-          <div className="tile is-ancestor">
-            <div className="tile is-vertical is-8">
-              <div className="tile">
-                <DateLogTile />
-                <ProgressChartTile
-                  change="down"
-                  weightPercent="5"
-                  progress="46"
-                />
+            <div className="tile is-ancestor">
+              <div className="tile is-vertical is-8">
+                <div className="tile">
+                  <DateLogTile />
+                  <ProgressChartTile
+                    change="down"
+                    weightPercent="5"
+                    progress="46"
+                  />
+                </div>
+                <WorkoutDataTile />
               </div>
-              <WorkoutDataTile />
+              <WorkoutStatsTile
+                totalWeight="1450"
+                strongestLift="Squat"
+                strongestLiftWeight="180"
+                totalWorkouts="13"
+              />
             </div>
-            <WorkoutStatsTile
-              totalWeight="1450"
-              strongestLift="Squat"
-              strongestLiftWeight="180"
-              totalWorkouts="13"
-            />
           </div>
         </div>
       </section>

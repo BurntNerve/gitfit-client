@@ -124,7 +124,7 @@ export function WorkoutDataTile(props) {
             weight={newExerciseWeights[props.currentExerciseCounter]}
           />
           <Button
-            newClasses="submit-button is-dark"
+            newClasses="submit-button is-danger"
             text="Next Exercise"
             onClick={() =>
               props.dispatch(actions.nextExercise(props.currentExerciseCounter === 0 ? firstInfo : secondInfo))
@@ -148,7 +148,7 @@ export function WorkoutDataTile(props) {
             weight={newExerciseWeights[props.currentExerciseCounter]}
           />
           <Button
-            newClasses="submit-button is-success"
+            newClasses="submit-button is-danger"
             text="Save Workout"
             onClick={() => handleSaveWorkout(thirdInfo)}
           />

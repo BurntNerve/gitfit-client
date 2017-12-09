@@ -174,20 +174,20 @@ export class SignUp extends React.Component {
                   </Link> */}
                   <button
                     type="submit"
-                    className="button submit-button is-dark"
+                    className="button submit-button is-info"
                     disabled={this.props.pristine || this.props.submitting}
                   >
-                    Sign Up
+                    Submit
                   </button>
                 </div>
               </div>
             </form>
           </div>
         </section>
-        <p className="login-prompt has-text-white-bis has-text-centered">
+        <p className="login-prompt has-text-black has-text-centered">
           Already have an account?{' '}
-          <Link className="has-text-info" to="/registration/login">
-            <strong>Login</strong>
+          <Link className="has-text-black" to="/registration/login">
+            <strong className="has-text-info">Login</strong>
           </Link>
         </p>
       </div>

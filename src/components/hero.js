@@ -12,10 +12,8 @@ export function Hero(props) {
       <section className="hero">
         <div className="hero-body">
           <div className="container">
-            <h1 className="title has-text-centered is-size-1">
-              Fitness for Developers
-            </h1>
-            <Terminal />
+            <h1 className="title is-size-1 ">Fitness for Developers</h1>
+            {/* <Terminal /> */}
             <Link to="/profile">
               <Button text="Dashboard" newClasses="sign-up is-medium is-dark" />
             </Link>
@@ -27,13 +25,30 @@ export function Hero(props) {
   return (
     <section className="hero">
       <div className="hero-body">
-        <div className="container">
-          <h1 className="title has-text-centered is-size-1">
-            Fitness for Developers
+        <div className="container has-text-left">
+          <h1 className="title hero-title has-text-left is-size-1 has-text-white-bis">
+            <strong>Fitness for Developers</strong>
           </h1>
-          <Terminal />
+          <h2 className="subtitle has-text-white-bis is-size-4">
+            GitFit is a tech-oriented platform dedicated to helping people begin
+            their fitness journey.
+          </h2>
+          {/* <Terminal /> */}
           <Link to="/registration">
-            <Button text="Sign Up" newClasses="sign-up is-medium is-dark" />
+            <strong>
+              <Button
+                text="Create Account"
+                newClasses="sign-up is-medium is-danger"
+              />
+            </strong>
+          </Link>
+          <Link to="/registration/login">
+            <strong>
+              <Button
+                text="Login"
+                newClasses="sign-up login is-medium is-success"
+              />
+            </strong>
           </Link>
         </div>
       </div>

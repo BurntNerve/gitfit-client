@@ -1,6 +1,15 @@
 .profile-section {
   min-height: 90vh;
-  background-color: hsl(0, 0%, 21%);
+  /*background-color: #292a35;*/
+  /*background-image: linear-gradient( to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);*/
+  background: linear-gradient( to right top, #051937, #121d37, #1b2136, #232536, #292a35), url(https://images.unsplash.com/photo-1500468756762-a401b6f17b46?auto=format&fit=crop&w=1268&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D) no-repeat center center fixed;
+  /*background: url(https://image.freepik.com/free-vector/web-designs-collection_1300-326.jpg) no-repeat center center fixed;*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-blend-mode: hard-light;
+  z-index: 0;
 }
 
 .submit-button {
@@ -9,6 +18,11 @@
   margin-top: 20px;
   width: 100%;
   max-width: 275px;
+}
+
+.tint {
+  background-color: black;
+  z-index: 1;
 }
 
 .is-ancestor {

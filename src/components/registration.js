@@ -14,8 +14,8 @@ export function Registration(props) {
   return (
     <section className="section sign-up-container">
       <div className="container">
-        <h1 className="title has-text-white-bis is-size-2-mobile is-size-1-tablet has-text-centered">
-          Start your life.
+        <h1 className="title has-text-white is-size-1 has-text-centered">
+          It's time to get moving.
         </h1>
       </div>
       <Route exact path="/registration" component={SignUp} />

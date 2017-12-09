@@ -30,9 +30,9 @@ export class WorkoutLog extends React.Component {
             <h1 className="title is-size-3-mobile is-size-1-tablet has-text-centered headline has-text-white-bis">
               Workout Log
             </h1>
-            <Link to="/profile">
+            {/* <Link to="/profile">
               <Button text="Profile" newClasses="is-medium" />
-            </Link>
+            </Link> */}
           </div>
           <div className="timeline is-centered">
             <header className="timeline-header">
@@ -52,13 +52,13 @@ export class WorkoutLog extends React.Component {
           <h1 className="title is-size-3-mobile is-size-1-tablet has-text-centered headline has-text-white-bis">
             Workout Log
           </h1>
-          <Link to="/profile">
+          {/* <Link to="/profile">
             <Button text="Profile" newClasses="is-medium" />
-          </Link>
+          </Link> */}
         </div>
         <div className="timeline is-centered">
           <header className="timeline-header">
-            <span className="tag is-medium">Start</span>
+            <span className="tag is-large">Start</span>
           </header>
           <div className="timeline-item">
             <div className="timeline-marker" />
@@ -69,7 +69,7 @@ export class WorkoutLog extends React.Component {
             </div>
           </div>
           <div className="timeline-header">
-            <span className="tag is-medium">Now</span>
+            <span className="tag is-large">Now</span>
           </div>
         </div>
       </section>

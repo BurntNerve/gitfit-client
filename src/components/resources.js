@@ -12,8 +12,8 @@ export default function Resources() {
           <div className="container">
             <div className="columns odd-section">
               <div className="column">
-                <h1 className="title has-text-gray-darker">Form</h1>
-                <h2 className="subtitle has-text-grey-darker">
+                <h1 className="title has-text-white-bis">Form</h1>
+                <h2 className="subtitle has-text-white-bis">
                   The following three sections are the core tenents of leading a
                   healthy lifestyle. However, Form is what allows you to capture
                   the full benefits of your movements as well as give you the
@@ -23,10 +23,10 @@ export default function Resources() {
                 </h2>
               </div>
               <div className="column">
-                <h1 className="title has-text-grey-darker">Links:</h1>
+                <h1 className="title has-text-white-bis">Links:</h1>
                 <h2 className="subtitle link">
                   <a
-                    className="has-text-grey-darker"
+                    className="has-text-white-bis"
                     href="https://www.youtube.com/watch?v=EP2g3Sj3qSw"
                   >
                     https://www.youtube.com/watch?v=EP2g3Sj3qSw
@@ -34,7 +34,7 @@ export default function Resources() {
                 </h2>
                 <h2 className="subtitle link">
                   <a
-                    className="has-text-grey-darker"
+                    className="has-text-white-bis"
                     href="https://www.youtube.com/watch?v=ro3Mh9o7JPU"
                   >
                     https://www.youtube.com/watch?v=ro3Mh9o7JPU
@@ -81,15 +81,15 @@ export default function Resources() {
           <div className="container">
             <div className="columns odd-section">
               <div className="column">
-                <h1 className="title has-text-grey-darker">Exercise</h1>
-                <h2 className="subtitle has-text-grey-darker">
+                <h1 className="title has-text-white-bis">Exercise</h1>
+                <h2 className="subtitle has-text-white-bis">
                   The routine that this program uses is called Stronglifts 5 x
                   5. It is a program that assumes no previous experience and
                   will help you grow stronger quite quickly.
                 </h2>
               </div>
               <div className="column">
-                <h1 className="title has-text-grey-darker">Links:</h1>
+                <h1 className="title has-text-white-bis">Links:</h1>
 
                 <h2 className="subtitle link">
                   <a

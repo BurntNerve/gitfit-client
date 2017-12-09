@@ -33,7 +33,7 @@ export default function LandingSection(props) {
     );
   } else if (props.section === 'Second') {
     return (
-      <section className="section secondContent">
+      <section className="section secondContent is-background-git">
         <div className="container">
           <div className="columns">
             <div className="column has-text-centered has-vertically-aligned-content">

@@ -85,10 +85,10 @@ export class LogIn extends React.Component {
               <div className="control has-text-centered field-control">
                 <button
                   type="submit"
-                  className="button submit-button is-dark"
+                  className="button submit-button is-danger"
                   disabled={this.props.pristine || this.props.submitting}
                 >
-                  Log In
+                  Submit
                 </button>
               </div>
             </div>

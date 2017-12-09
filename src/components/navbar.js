@@ -22,7 +22,7 @@ export class Navbar extends React.Component {
   render() {
     if (!this.props.loggedIn) {
       return (
-        <nav className="navbar is-fixed-top">
+        <nav className="navbar is-fixed-top is-background-git">
           <div className="navbar-brand">
             <Link className="navbar-item" to="/">
               <h1 className="title is-size-4">
@@ -39,13 +39,13 @@ export class Navbar extends React.Component {
             }`}
           >
             <div className="navbar-start">
-              <div className="navbar-item" onClick={() => this.burgerActive()}>
+              {/* <div className="navbar-item" onClick={() => this.burgerActive()}>
                 <Link to="/registration/login">
                   <span className="control">
                     <span className="subtitle is-size-6">Login</span>
                   </span>
                 </Link>
-              </div>
+              </div> */}
               <div className="navbar-item" onClick={() => this.burgerActive()}>
                 <Link to="/resources">
                   <span className="control">

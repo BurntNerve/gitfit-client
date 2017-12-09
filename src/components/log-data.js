@@ -56,8 +56,8 @@ export function LogData(props) {
             Body Weight: {props.workout.bodyWeight}lbs
           </p>
           <Button
-            text="edit"
-            newClasses="is-small"
+            text="Edit"
+            newClasses="is-small is-danger"
             onClick={() => modalActive(props.index)}
           />
           <div
