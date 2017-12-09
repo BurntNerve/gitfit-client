@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Terminal from './terminal';
+// import Terminal from './terminal';
 import Button from './button';
 import './hero.css';
 

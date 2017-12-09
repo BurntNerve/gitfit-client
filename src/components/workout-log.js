@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Button from './button';
+// import Button from './button';
 import LogData from './log-data';
 
 import './workout-log.css';
