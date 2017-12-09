@@ -33,7 +33,7 @@ export default function LandingSection(props) {
     return (
       <section className="section secondContent is-background-git">
         <div className="container">
-          <div className="columns">
+          <div className="columns reverse-row-order">
             <div className="column has-text-centered has-vertically-aligned-content">
               <figure className="image is-16by9">
                 <img

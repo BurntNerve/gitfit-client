@@ -11,3 +11,10 @@
   flex-direction: column;
   justify-content: center;
 }
+
+@media only screen and (max-width: 769px) {
+  .reverse-row-order {
+    flex-direction: column-reverse;
+    display: flex;
+  }
+}
