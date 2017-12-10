@@ -73,7 +73,7 @@ export function LogData(props) {
                 weight={currentWorkoutWeights[props.currentExerciseCounter]}
               />
               <Button
-                newClasses="submit-button is-profile-git"
+                newClasses="submit-button is-danger"
                 text="Next Exercise"
                 onClick={() =>
                   props.dispatch(actions.nextExercise(props.currentExerciseCounter === 0
@@ -84,7 +84,7 @@ export function LogData(props) {
               <hr />
               <Button
                 text="Delete Workout"
-                newClasses="is-danger deleteWorkoutButton modalButton"
+                newClasses="is-profile-git deleteWorkoutButton modalButton"
                 onClick={() => deleteWorkout(props.index)}
               />
             </div>
@@ -154,7 +154,7 @@ export function LogData(props) {
               <hr />
               <Button
                 text="Delete Workout"
-                newClasses="is-danger deleteWorkoutButton modalButton"
+                newClasses="is-profile-git deleteWorkoutButton modalButton"
                 onClick={() => deleteWorkout(props.index)}
               />
             </div>
