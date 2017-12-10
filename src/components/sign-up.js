@@ -118,16 +118,16 @@ export class SignUp extends React.Component {
                     Submit
                   </button>
                 </div>
+                <p className="login-prompt has-text-black has-text-centered">
+                  Already have an account?{' '}
+                  <Link className="has-text-black" to="/registration/login">
+                    <strong className="has-text-danger">Login</strong>
+                  </Link>
+                </p>
               </div>
             </form>
           </div>
         </section>
-        <p className="login-prompt has-text-black has-text-centered">
-          Already have an account?{' '}
-          <Link className="has-text-black" to="/registration/login">
-            <strong className="has-text-danger">Login</strong>
-          </Link>
-        </p>
       </div>
     );
   }
