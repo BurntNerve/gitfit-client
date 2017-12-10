@@ -30,6 +30,12 @@ export class SignUp extends React.Component {
       <div>
         <section className="section sign-up-section">
           <div className="container sign-up-area has-text-left">
+            <h2 className="title">After you sign up...</h2>
+            <p className="subtitle">
+              Make sure to head over to the{' '}
+              <Link to="/resources">resources</Link> page and familiarize
+              yourself with the workout routine GitFit uses, StrongLifts 5 x 5.
+            </p>
             <form
               className="registration-form"
               onSubmit={this.props.handleSubmit(values =>

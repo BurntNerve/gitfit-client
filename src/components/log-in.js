@@ -68,6 +68,15 @@ export class LogIn extends React.Component {
                   Submit
                 </button>
               </div>
+              <div className="test-account-details has-text-centered">
+                <h2 className="subtitle">Demo Account</h2>
+                <p>
+                  <strong>Username</strong>: test-user
+                </p>
+                <p>
+                  <strong>Password</strong>: test-password
+                </p>
+              </div>
             </div>
           </form>
         </div>
