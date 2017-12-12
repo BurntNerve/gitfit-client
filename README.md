@@ -15,17 +15,17 @@ effects of that exercise.
 
 GitFit affords it's users the ability to create their own accounts on the site
 in order to keep a persistent log of their workouts. Each "dashboard" page is
-comprised of five tiles in addition to a seperate log. Each tile serves a
+comprised of five tiles in addition to a separate log. Each tile serves a
 different piece of the overall core functionality.
 
 * The Date tile presents users with current date as well as the last time they
   logged a workout.
 
 * The Weight tile provides users with two important stats in the form of
-  percentages: How much weight they've changed since their initial acount
+  percentages: How much weight they've changed since their initial account
   creation, as well as how far along towards their goal weight they are.
 
-* The Statistics tile provides users with 3 stastics related to their logged
+* The Statistics tile provides users with 3 statistics related to their logged
   workouts: Total Weight Moved, Strongest Lifts, Total Workouts Logged.
 
 * The Workout tile provides users an interface with which they can log their
