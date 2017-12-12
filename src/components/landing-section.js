@@ -1,5 +1,8 @@
 import React from 'react';
 import './landing-section.css';
+import landingPictureOne from '../landingPictureOne.jpeg';
+import landingPictureTwo from '../landingPictureTwo.jpeg';
+import landingPictureThree from '../landingPictureThird.jpeg';
 
 export default function LandingSection(props) {
   if (props.section === 'First') {
@@ -19,10 +22,7 @@ export default function LandingSection(props) {
             </div>
             <div className="column has-text-centered has-vertically-aligned-content">
               <figure className="image is-16by9">
-                <img
-                  src="https://images.unsplash.com/photo-1492632833879-ffead221b059?auto=format&fit=crop&w=2552&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"
-                  alt="man stretching"
-                />
+                <img src={landingPictureOne} alt="man stretching" />
               </figure>
             </div>
           </div>
@@ -37,7 +37,7 @@ export default function LandingSection(props) {
             <div className="column has-text-centered has-vertically-aligned-content">
               <figure className="image is-16by9">
                 <img
-                  src="https://images.unsplash.com/photo-1463214551910-9d4d4e4ee844?auto=format&fit=crop&w=2550&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"
+                  src={landingPictureTwo}
                   alt="woman doing yoga by the beach"
                 />
               </figure>
@@ -69,7 +69,7 @@ export default function LandingSection(props) {
             <div className="column has-text-centered has-vertically-aligned-content">
               <figure className="image is-16by9">
                 <img
-                  src="https://images.unsplash.com/photo-1488401318902-f7feae66db20?auto=format&fit=crop&w=2579&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"
+                  src={landingPictureThree}
                   alt="person taking a break from biking"
                 />
               </figure>
