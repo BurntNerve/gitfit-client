@@ -12,10 +12,8 @@ export class LogIn extends React.Component {
     return this.props.dispatch(actions.logInUser(values.username, values.password));
   }
   render() {
-    console.log(this.props.submitting);
     let loading;
     if (this.props.submitting) {
-      console.log('submitting');
       loading = 'is-loading';
     }
     let error;

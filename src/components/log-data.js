@@ -7,7 +7,6 @@ import * as actions from '../actions';
 
 export function LogData(props) {
   const modalActive = () => {
-    console.log(props.index);
     props.dispatch(actions.modalActive(props.index));
   };
 

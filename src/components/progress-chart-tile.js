@@ -7,8 +7,6 @@ export function ProgressChartTile(props) {
     let change;
     let changePercent;
     let colorClass;
-    console.log(props.mostRecentWeight);
-    console.log(props.startingWeight);
     const progress = () => {
       const goalAmount = props.goalWeight - props.startingWeight;
       const progressAmount = props.mostRecentWeight - props.startingWeight;

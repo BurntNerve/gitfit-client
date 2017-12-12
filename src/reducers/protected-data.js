@@ -11,18 +11,15 @@ const initialState = {
 
 export default function protectedReducer(state = initialState, action) {
   if (action.type === FETCH_PROTECTED_DATA_SUCCESS) {
-    console.log('fetch success');
     return Object.assign({}, state, {
       data: action.data,
       error: null,
     });
   } else if (action.type === FETCH_PROTECTED_DATA_ERROR) {
-    console.log('fetch error');
     return Object.assign({}, state, {
       error: action.error,
     });
   } else if (action.type === MODAL_ACTIVE) {
-    console.log('modalized');
     const workouts = state.data.workouts.map((workout, index) => {
       if (index !== action.logIndex) {
         return workout;
