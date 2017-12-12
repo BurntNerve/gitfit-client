@@ -63,6 +63,7 @@ prefer to log their workouts while away from their primary computer.
 * CSS3
 * JavaScript
 * Node
+* Express
 * create-react-app
 * React
 * React Router
